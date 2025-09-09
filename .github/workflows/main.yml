@@ -1,3 +1,11 @@
+name: Deploy Static Website
+on:
+push:
+branches:
+- main
+build-and-deploy:
+# This specifies the type of computer to run the job on.
+runs-on: ubuntu-latest
 # These are the steps the job will follow, one by one.
 steps:
   # Step 1: This command gets all of your code from the repository so the job can work with it.
