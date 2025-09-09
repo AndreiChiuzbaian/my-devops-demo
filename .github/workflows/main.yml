@@ -1,0 +1,24 @@
+This file configures a CI/CD pipeline using GitHub Actions.The name of your workflow. This will appear in the "Actions" tab.name: Deploy Static WebsiteThis tells the workflow when to run. Here, it will run whenever someone pushes code to the 'main' branch.on:push:branches:- mainA workflow is made up of one or more "jobs."jobs:This job is named 'build-and-deploy'.build-and-deploy:# This specifies the type of computer to run the job on.runs-on: ubuntu-latest# These are the steps the job will follow, one by one.
+steps:
+  # Step 1: This command gets all of your code from the repository so the job can work with it.
+  - name: Checkout repository
+    uses: actions/checkout@v3
+
+  # Step 2: This is a placeholder for a "Build" step. For a simple website,
+  # we can just make sure the file exists. If it doesn't, the build will fail.
+  - name: Run a build step (file check)
+    run: |
+      echo "Simulating a build process..."
+      if [ ! -f "index.html" ]; then
+        echo "index.html not found! Build failed."
+        exit 1
+      fi
+      echo "Build successful: index.html found."
+
+  # Step 3: This is the most important part - the deployment. This special command sends your
+  # website to a place on GitHub called GitHub Pages.
+  - name: Deploy to GitHub Pages
+    uses: peaceiris/actions-gh-pages@v3
+    with:
+      github_token: ${{ secrets.GITHUB_TOKEN }}
+      publish_dir: ./ # This tells the action to publish the entire repository.
