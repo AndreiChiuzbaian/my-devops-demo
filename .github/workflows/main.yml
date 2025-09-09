@@ -11,18 +11,16 @@ runs-on: ubuntu-latest
 steps:
 - name: Checkout repository
 uses: actions/checkout@v3
-
-  - name: Run a build step (file check)
-    run: |
-      echo "Simulating a build process..."
-      if [ ! -f "index.html" ]; then
-        echo "index.html not found! Build failed."
-        exit 1
-      fi
-      echo "Build successful: index.html found."
-
-  - name: Deploy to GitHub Pages
-    uses: peaceiris/actions-gh-pages@v3
-    with:
-      github_token: ${{ secrets.GITHUB_TOKEN }}
-      publish_dir: ./
+- name: Run a build step (file check)
+run: |
+echo "Simulating a build process..."
+if [ ! -f "index.html" ]; then
+echo "index.html not found! Build failed."
+exit 1
+fi
+echo "Build successful: index.html found."
+- name: Deploy to GitHub Pages
+uses: peaceiris/actions-gh-pages@v3
+with:
+github_token: ${{ secrets.GITHUB_TOKEN }}
+publish_dir: ./
