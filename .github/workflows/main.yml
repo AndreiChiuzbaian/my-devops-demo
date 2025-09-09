@@ -1,4 +1,4 @@
-This file configures a CI/CD pipeline using GitHub Actions.The name of your workflow. This will appear in the "Actions" tab.name: Deploy Static WebsiteThis tells the workflow when to run. Here, it will run whenever someone pushes code to the 'main' branch.on:push:branches:- mainA workflow is made up of one or more "jobs."jobs:This job is named 'build-and-deploy'.build-and-deploy:# This specifies the type of computer to run the job on.runs-on: ubuntu-latest# These are the steps the job will follow, one by one.
+# These are the steps the job will follow, one by one.
 steps:
   # Step 1: This command gets all of your code from the repository so the job can work with it.
   - name: Checkout repository
