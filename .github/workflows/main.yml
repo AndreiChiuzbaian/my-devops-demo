@@ -25,9 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: lint
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install W3C Validator CLI
+      - uses: actions/checkout@v3
+      - name: Install w3c-validator-cli
         run: npm install -g w3c-validator-cli
       - name: Run W3C HTML Validator
         run: w3c-validator-cli --format json --warnings=0 index.html
