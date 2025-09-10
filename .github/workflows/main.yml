@@ -24,7 +24,7 @@ jobs:
       - name: Run HTMLHint
         run: htmlhint .
 
-  validate:
+validate:
     runs-on: ubuntu-latest
     needs: lint
     steps:
@@ -35,12 +35,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-
-      - name: Install HTML Validator
-        run: npm install html-validator -g
+      
+      - name: Install dependencies
+        run: |
+          npm init -y
+          npm install html-validator
 
       - name: Run HTML Validator
-        run: html-validator --file index.html --format json --no-warnings
+        run: npx html-validator --file index.html --format json --no-warnings
 
   deploy:
     runs-on: ubuntu-latest
