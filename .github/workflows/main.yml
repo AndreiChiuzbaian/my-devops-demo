@@ -27,11 +27,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install W3C Validator
-        run: npm install -g w3c-validator
+      - name: Install W3C Validator CLI
+        run: npm install -g w3c-validator-cli
       - name: Run W3C HTML Validator
-        run: |
-          validator --format json --warnings=0 index.html
+        run: w3c-validator-cli --format json --warnings=0 index.html
   deploy:
     runs-on: ubuntu-latest
     needs: validate
