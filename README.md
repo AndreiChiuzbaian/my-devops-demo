@@ -1,7 +1,7 @@
 # My DevOps CI/CD Demo Project
 
-Welcome to the **my-devops-demo** repository! This project showcases a simple DevOps CI/CD pipeline,
-using GitHub Actions, designed to demonstrate automated testing, validation, and deployment workflows.
+Welcome to the **my-devops-demo** repository! This project showcases a simple DevOps CI/CD pipeline for a static HTML site using GitHub Actions and GitHub Pages.
+It was designed to demonstrate automated testing, validation, and deployment workflows.
 
 ---
 
