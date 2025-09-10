@@ -19,7 +19,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install HTMLHint
-        run: npm install -g htmlhint
+        run: npm install -g htmlhint@latest
       - name: Run HTMLHint
         run: htmlhint .
   validate:
