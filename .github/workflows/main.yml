@@ -1,5 +1,6 @@
+---
 name: Deploy static content to Pages
-'on':
+on:
   push:
     branches:
       - main
@@ -27,17 +28,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
+      - name: Download W3C Validator
+        run: >
+          wget
+          https://github.com/validator/validator/releases/download/latest/vnu.jar
       - name: Validate HTML
-        uses: sharkdp/html-validate-action@v1
-        with:
-          files: index.html
+        run: |
+          java -jar vnu.jar index.html
   deploy:
     runs-on: ubuntu-latest
     needs: validate
     environment:
       name: github-pages
-      url: '${{ steps.deployment.outputs.page_url }}'
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
